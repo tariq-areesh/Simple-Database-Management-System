@@ -1,0 +1,19 @@
+﻿@page
+@model gameDb.Pages.AddModel
+
+<h2>Add Game</h2>
+
+<form method="post">
+    <label>Name:</label>
+    <input asp-for="NewGame.name" /><br/>
+
+    <label>Genre:</label>
+    <input asp-for="NewGame.genre" /><br/>
+
+    <button type="submit" style="margin: 10px;">Add</button>
+</form>
+
+@if (Model.msg != null)
+{
+    <p>@Model.msg</p>
+}

@@ -1,0 +1,40 @@
+﻿@page "{searchString?}"
+@model gameDb.Pages.gamesListModel
+
+<h2 class="mb-4" style="text-align: center;">Games List:</h2>
+
+<form>
+    <p>
+    <label>Search by name: <input type="text" asp-for="SearchString"/></label>
+    <input type="submit" value="Search">
+    <p>
+</form>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in Model.Games)
+        {
+            <tr>
+                <td>@game.id</td>
+                <td>@game.name</td>
+                <td>@game.genre</td>
+                <td>
+                    <a asp-area="" asp-page="/Edit" asp-route-id="@game.id" class="btn btn-sm btn-warning me-1" style="margin-bottom: 10px;">Edit</a>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@game.id" onsubmit="return confirm('Are you sure you want to delete this game?');">
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model Edit.Pages.EditModel
+
+<h2>Edit Game</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="GameInfo.id" />
+
+    <div class="mb-3">
+        <label asp-for="GameInfo.name" class="form-label">Name</label>
+        <input asp-for="GameInfo.name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="GameInfo.genre" class="form-label">Genre</label>
+        <input asp-for="GameInfo.genre" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="/gamesList" class="btn btn-danger">Cancel</a>
+</form>
